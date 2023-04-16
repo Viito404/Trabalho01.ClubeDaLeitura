@@ -73,7 +73,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
                     return;
                }
 
-               repositorioRevista.ExibirRevistas("Mostrando revistas...");
+               repositorioRevista.ExibirRevistas("Mostrando revistas...\n");
                Console.Write("\nEntre com a ID da revista que será pega pelo amigo:\n> ");
                int idRevista = Convert.ToInt32(Console.ReadLine());
                NegocioRevista revista  = repositorioRevista.PegarIdRevistas(idRevista);

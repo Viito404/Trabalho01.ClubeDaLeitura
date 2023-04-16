@@ -34,7 +34,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
                int mesAtual = diaAtual.Month;
                Console.Clear();
                Program.ImprimirMensagem("Visualizando empréstimos do mês...\n", ConsoleColor.DarkGray, 1);
-               Console.WriteLine($"\nEmpréstimo realizados desse mês ({mesAtual}):");
+               Console.WriteLine($"Empréstimo realizados desse mês ({mesAtual}):");
 
                foreach (NegocioEmprestimo emprestimo in dados)
                {
@@ -55,7 +55,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
                Console.Clear();
                Program.ImprimirMensagem("Visualizando empréstimos abertos...\n", ConsoleColor.DarkGray, 1);
                DateTime dataAtual = DateTime.Today;
-
+               Console.WriteLine($"\nEmpréstimo abertos: ");
                foreach (NegocioEmprestimo emprestimo in dados)
                {
                     DateTime DataAberturaEmprestimo = DateTime.ParseExact(emprestimo.DataEmprestimo, "dd/MM/yyyy", CultureInfo.InvariantCulture);
