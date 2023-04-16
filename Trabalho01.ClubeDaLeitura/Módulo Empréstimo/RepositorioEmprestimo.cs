@@ -34,7 +34,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
                int mesAtual = diaAtual.Month;
                Console.Clear();
                Program.ImprimirMensagem("Visualizando empréstimos do mês...\n", ConsoleColor.DarkGray, 1);
-               Console.WriteLine($"\nEmpréstimo realizados no mês {mesAtual}:");
+               Console.WriteLine($"\nEmpréstimo realizados desse mês ({mesAtual}):");
 
                foreach (NegocioEmprestimo emprestimo in dados)
                {
@@ -42,8 +42,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
 
                     if (compararDataAbertura.Month == mesAtual)
                     {
-                         Console.BackgroundColor = ConsoleColor.Blue;
-                         Console.ForegroundColor = ConsoleColor.White;
+                         Console.ForegroundColor = ConsoleColor.DarkCyan;
                          Console.WriteLine($"Revista: {emprestimo.EmprestimoRevista.TipoColecao}\nAmigo: {emprestimo.EmprestimoAmigo.Nome}\nData abertura do empréstimo: {emprestimo.DataEmprestimo}\nData da devolução: {emprestimo.DataDevolucao}");
                          Console.WriteLine();
                          Console.ResetColor();
@@ -64,6 +63,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
                     System.TimeSpan diasAberto = DataDevolucao.Subtract(DataAberturaEmprestimo);
                     if (DataAberturaEmprestimo < DataDevolucao && DataDevolucao > dataAtual)
                     {
+                         Console.ForegroundColor = ConsoleColor.DarkCyan;
                          Console.WriteLine($"\nRevista: {emprestimo.EmprestimoRevista.TipoColecao}\nAmigo: {emprestimo.EmprestimoAmigo.Nome}\nData abertura do empréstimo: {emprestimo.DataEmprestimo}");
                          Console.WriteLine("Dias Aberto: {0:dd}", diasAberto);
                          Console.ResetColor();

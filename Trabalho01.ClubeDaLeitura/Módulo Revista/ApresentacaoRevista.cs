@@ -75,6 +75,8 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                Console.Write("\nEntre com o ANO DA REVISTA:\n> ");
                int anoRevista = Convert.ToInt32(Console.ReadLine());
 
+               repositorioRevista.ExibirRevistas("Mostrando revistas...\n");
+
                Console.Write("\nEntre com a ID DA REVISTA:\n> ");
                int idRevista = Convert.ToInt32(Console.ReadLine());
 
@@ -86,6 +88,8 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                     CadastrarRevista();
                     return;
                }
+
+               repositorioCaixa.ExibirCaixas("Mostrando caixas...\n");
 
                Console.Write("\nEntre com a ID DA CAIXA:\n> ");
                int idCaixa = Convert.ToInt32(Console.ReadLine());

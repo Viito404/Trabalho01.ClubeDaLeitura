@@ -62,8 +62,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
           }
           private void CadastrarEmprestimo()
           {
-
-               repositorioAmigo.ExibirAmigos("Mostrando amigos...");
+               repositorioAmigo.ExibirAmigos("Mostrando amigos...\n");
                Console.Write("\nEntre com a ID do amigo que pegará uma revista emprestada:\n> ");
                int idAmigo = Convert.ToInt32(Console.ReadLine());
                NegocioAmigo amigo = repositorioAmigo.PegarIdAmigos(idAmigo);
