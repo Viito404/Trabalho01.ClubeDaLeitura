@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Trabalho01.ClubeDaLeitura.Módulo_Amigo;
 using Trabalho01.ClubeDaLeitura.Módulo_Caixa;
+using Trabalho01.ClubeDaLeitura.Utilitários;
 
 namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 {
-     internal class ApresentacaoRevista
+     internal class ApresentacaoRevista : Tela
      {
           private RepositorioRevista repositorioRevista = null;
           private RepositorioCaixa repositorioCaixa = null;
@@ -23,18 +24,12 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                int saida = 1;
                do
                {
-                    Console.Clear();
-                    Console.WriteLine("| REVISTAS |");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("\n[1] CRIAR;\n[2] VISUALIZAR;\n[3] ATUALIZAR;\n[4] REMOVER;\n[0] SAIR.");
-                    Console.ResetColor();
-                    Console.Write("\nEntre com a opção desejada:\n> ");
-                    string opcaoRevista = Console.ReadLine();
+                    string opcaoRevista = GerarMenu("REVISTAS", ConsoleColor.Blue, 1);
 
                     switch (opcaoRevista)
                     {
                          case "0":
-                              Program.ImprimirMensagem("\nSaindo de Revistas...", ConsoleColor.Red, 1);
+                              ImprimirTexto("\nSaindo de Revistas...", ConsoleColor.Red, 1);
                               saida--;
                               break;
 
@@ -55,7 +50,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                               break;
 
                          default:
-                              Program.ImprimirMensagem("\nInsira uma opção inválida!", ConsoleColor.Red, 1);
+                              ImprimirTexto("\nInsira uma opção inválida!", ConsoleColor.Red, 1);
                               break;
                     }
                } while (saida > 0);
@@ -64,7 +59,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
           private void CadastrarRevista()
           {
                Console.Clear();
-               Program.ImprimirMensagem("Cadastrando revista...", ConsoleColor.DarkGray, 0);
+               ImprimirTexto("Cadastrando revista...", ConsoleColor.DarkGray, 0);
 
                Console.Write("\nEntre com o TIPO DA COLEÇÃO:\n> ");
                string tipoColecao = Console.ReadLine();
@@ -84,7 +79,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 
                if (idInvalido)
                {
-                    Program.ImprimirMensagem("\nNúmero já registrado!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nNúmero já registrado!", ConsoleColor.Red, 1);
                     CadastrarRevista();
                     return;
                }
@@ -98,14 +93,14 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 
                if(caixaRevista == null)
                {
-                    Program.ImprimirMensagem("\nCaixa inválida!", ConsoleColor.Red, 1);                   
+                    ImprimirTexto("\nCaixa inválida!", ConsoleColor.Red, 1);                   
                     return;  
                }
 
                NegocioRevista revista = new NegocioRevista(tipoColecao, numeroEdicao, anoRevista, idRevista, caixaRevista);
 
                repositorioRevista.GravarRevistas(revista);
-               Program.ImprimirMensagem("\nCadastro Finalizado!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nCadastro Finalizado!", ConsoleColor.Green, 1);
           }
 
           private void VisualizarRevista()
@@ -136,7 +131,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 
                if (atualizarRevista == null)
                {
-                    Program.ImprimirMensagem("\nEntre com uma ID válida!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nEntre com uma ID válida!", ConsoleColor.Red, 1);
                     goto idatualizacao;
                }
 
@@ -156,7 +151,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 
                if (idInvalido)
                {
-                    Program.ImprimirMensagem("\nID já registrada!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nID já registrada!", ConsoleColor.Red, 1);
                     AtualizarRevista();
                     return;
                }
@@ -168,7 +163,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 
                if (caixaRevista == null)
                {
-                    Program.ImprimirMensagem("\nCaixa inválida!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nCaixa inválida!", ConsoleColor.Red, 1);
                     AtualizarRevista();
                     return;
                }
@@ -179,7 +174,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                atualizarRevista.IdRevista = novaID;
                atualizarRevista.CaixaRevista = caixaRevista;
 
-               Program.ImprimirMensagem("\nAtualização Finalizada!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nAtualização Finalizada!", ConsoleColor.Green, 1);
           }
 
           private void RemoverRevista()
@@ -198,12 +193,12 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 
                if (removerRevista == null)
                {
-                    Program.ImprimirMensagem("\nEntre com um número válido!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nEntre com um número válido!", ConsoleColor.Red, 1);
                     goto idremocao;
                }
 
                repositorioRevista.RemoverRevistas(removerRevista);
-               Program.ImprimirMensagem("\nRemoção finalizada!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nRemoção finalizada!", ConsoleColor.Green, 1);
           }
      }
 }

@@ -21,7 +21,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
                {
                     if (dados.Count == 0)
                     {
-                         Program.ImprimirMensagem("\nNenhum amigo cadastrado!", ConsoleColor.DarkYellow, 1);
+                         ImprimirTexto("\nNenhum amigo cadastrado!", ConsoleColor.DarkYellow, 1);
                          return true;
                     }
 
@@ -67,7 +67,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
           public void ExibirAmigos(string mensagem)
           {
                Console.Clear();
-               Program.ImprimirMensagem(mensagem, ConsoleColor.DarkGray, 0);
+               ImprimirTexto(mensagem, ConsoleColor.DarkGray, 0);
                Console.BackgroundColor = ConsoleColor.Blue;
                Console.ForegroundColor = ConsoleColor.White;
                Console.WriteLine("| {0,-20} | {1,-20} | {2,-20} | {3,-20} | {4,-20} |", "ID", "NOME", "RESPONSÁVEL","ENDEREÇO","TELEFONE");

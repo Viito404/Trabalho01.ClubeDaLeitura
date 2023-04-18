@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Trabalho01.ClubeDaLeitura.Módulo_Caixa;
 using Trabalho01.ClubeDaLeitura.Módulo_Revista;
-
+using Trabalho01.ClubeDaLeitura.Utilitários;
 namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
 {
-     internal class ApresentacaoAmigo
+     internal class ApresentacaoAmigo : Tela
      {
           RepositorioAmigo repositorioAmigo = null;
           public ApresentacaoAmigo(RepositorioAmigo repositorioAmigo)
@@ -21,18 +21,12 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
                int saida = 1;
                do
                {
-                    Console.Clear();
-                    Console.WriteLine("| AMIGOS |");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("\n[1] CRIAR;\n[2] VISUALIZAR;\n[3] ATUALIZAR;\n[4] REMOVER;\n[0] SAIR.");
-                    Console.ResetColor();
-                    Console.Write("\nEntre com a opção desejada:\n> ");
-                    string opcaoAmigo = Console.ReadLine();
+                    string opcaoAmigo = GerarMenu("AMIGOS", ConsoleColor.Blue, 1);
 
                     switch (opcaoAmigo)
                     {
                          case "0":
-                              Program.ImprimirMensagem("\nSaindo de Amigos...", ConsoleColor.Red, 1);
+                              ImprimirTexto("\nSaindo de Amigos...", ConsoleColor.Red, 1);
                               saida--;
                               break;
 
@@ -53,7 +47,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
                               break;
 
                          default:
-                              Program.ImprimirMensagem("\nInsira uma opção inválida!", ConsoleColor.Red, 1);
+                              ImprimirTexto("\nInsira uma opção inválida!", ConsoleColor.Red, 1);
                               break;
                     }
                } while (saida > 0);
@@ -62,7 +56,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
           private void CadastrarAmigo()
           {
                Console.Clear();
-               Program.ImprimirMensagem("Cadastrando amigo...", ConsoleColor.DarkGray, 0);
+               ImprimirTexto("Cadastrando amigo...", ConsoleColor.DarkGray, 0);
 
                Console.Write("\nEntre com o seu NOME:\n> ");
                string nome = Console.ReadLine();
@@ -83,7 +77,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
 
                if (idInvalido)
                {
-                    Program.ImprimirMensagem("\nID já registrada!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nID já registrada!", ConsoleColor.Red, 1);
                     CadastrarAmigo();
                     return;
                }
@@ -91,7 +85,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
                NegocioAmigo amigo = new NegocioAmigo(nome, nomeResponsavel, endereco, telefone, id);
 
               repositorioAmigo.GravarAmigos(amigo);
-               Program.ImprimirMensagem("\nCadastro Finalizado!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nCadastro Finalizado!", ConsoleColor.Green, 1);
           }
           
           private void VisualizarAmigo()
@@ -122,7 +116,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
 
                if (atualizarAmigo == null)
                {
-                    Program.ImprimirMensagem("\nEntre com uma ID válida!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nEntre com uma ID válida!", ConsoleColor.Red, 1);
                     goto idatualizacao;
                }
 
@@ -145,7 +139,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
 
                if (idInvalido)
                {
-                    Program.ImprimirMensagem("\nID já registrada!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nID já registrada!", ConsoleColor.Red, 1);
                     AtualizarAmigo();
                     return;
                }
@@ -155,7 +149,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
                atualizarAmigo.Endereco = novoEndereco;
                atualizarAmigo.Telefone = novoTelefone;
                atualizarAmigo.IdAmigo = novaID;
-               Program.ImprimirMensagem("\nAtualização Finalizada!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nAtualização Finalizada!", ConsoleColor.Green, 1);
           }
 
           private void RemoverAmigo()
@@ -174,12 +168,12 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
 
                if (removerAmigo == null)
                {
-                    Program.ImprimirMensagem("\nEntre com um número válido!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nEntre com um número válido!", ConsoleColor.Red, 1);
                     goto idremocao;
                }
 
                repositorioAmigo.RemoverAmigos(removerAmigo);
-               Program.ImprimirMensagem("\nRemoção finalizada!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nRemoção finalizada!", ConsoleColor.Green, 1);
           }
      }
 }

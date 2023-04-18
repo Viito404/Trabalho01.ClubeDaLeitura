@@ -19,7 +19,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
           {
                if (dados.Count == 0)
                {
-                    Program.ImprimirMensagem("\nNenhum empréstimo cadastrado!", ConsoleColor.DarkYellow, 1);
+                    ImprimirTexto("\nNenhum empréstimo cadastrado!", ConsoleColor.DarkYellow, 1);
                     return true;
                }
                else
@@ -33,7 +33,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
                DateTime diaAtual = DateTime.Today;
                int mesAtual = diaAtual.Month;
                Console.Clear();
-               Program.ImprimirMensagem("Visualizando empréstimos do mês...\n", ConsoleColor.DarkGray, 1);
+               ImprimirTexto("Visualizando empréstimos do mês...\n", ConsoleColor.DarkGray, 1);
                Console.WriteLine($"Empréstimo realizados desse mês ({mesAtual}):");
 
                foreach (NegocioEmprestimo emprestimo in dados)
@@ -53,7 +53,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
           public void EmprestimosAbertos()
           {
                Console.Clear();
-               Program.ImprimirMensagem("Visualizando empréstimos abertos...\n", ConsoleColor.DarkGray, 1);
+               ImprimirTexto("Visualizando empréstimos abertos...\n", ConsoleColor.DarkGray, 1);
                DateTime dataAtual = DateTime.Today;
                Console.WriteLine($"\nEmpréstimo abertos: ");
                foreach (NegocioEmprestimo emprestimo in dados)

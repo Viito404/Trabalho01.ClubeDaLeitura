@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Trabalho01.ClubeDaLeitura.Utilitários;
 namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 {
-     internal class ApresentacaoCaixa
+     internal class ApresentacaoCaixa : Tela
      {
           RepositorioCaixa repositorioCaixa = null;
           public ApresentacaoCaixa(RepositorioCaixa repositorioCaixa)
@@ -19,18 +19,12 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
                int saida = 1;
                do
                {
-                    Console.Clear();
-                    Console.WriteLine("| CAIXAS |");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("\n[1] CRIAR;\n[2] VISUALIZAR;\n[3] ATUALIZAR;\n[4] REMOVER;\n[0] SAIR.");
-                    Console.ResetColor();
-                    Console.Write("\nEntre com a opção desejada:\n> ");
-                    string opcaoCaixa = Console.ReadLine();
+                    string opcaoCaixa = GerarMenu("CAIXAS", ConsoleColor.Blue, 1);
 
                     switch (opcaoCaixa)
                     {
                          case "0":
-                              Program.ImprimirMensagem("\nSaindo de Caixas...", ConsoleColor.Red, 1);
+                              ImprimirTexto("\nSaindo de Caixas...", ConsoleColor.Red, 1);
                               saida--;
                               break;
 
@@ -51,7 +45,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
                               break;
 
                          default:
-                              Program.ImprimirMensagem("\nInsira uma opção inválida!", ConsoleColor.Red, 1);
+                              ImprimirTexto("\nInsira uma opção inválida!", ConsoleColor.Red, 1);
                               break;
                     }
                } while (saida > 0);
@@ -60,7 +54,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
           private void CadastrarCaixa()
           {
                Console.Clear();
-               Program.ImprimirMensagem("Cadastrando caixa...", ConsoleColor.DarkGray, 0);
+               ImprimirTexto("Cadastrando caixa...", ConsoleColor.DarkGray, 0);
 
                Console.Write("\nEntre com a COR da caixa:\n> ");
                string cor = Console.ReadLine();
@@ -75,7 +69,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 
                if (idInvalido)
                {
-                    Program.ImprimirMensagem("\nNúmero já registrado!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nNúmero já registrado!", ConsoleColor.Red, 1);
                     CadastrarCaixa();
                     return;
                }
@@ -83,7 +77,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
                NegocioCaixa caixa = new NegocioCaixa(cor, etiqueta, numero);
 
                repositorioCaixa.GravarCaixas(caixa);
-               Program.ImprimirMensagem("\nCadastro Finalizado!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nCadastro Finalizado!", ConsoleColor.Green, 1);
           }
 
           private void VisualizarCaixa()
@@ -115,7 +109,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 
                if (atualizarCaixa == null)
                {
-                    Program.ImprimirMensagem("\nEntre com um número válido!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nEntre com um número válido!", ConsoleColor.Red, 1);
                     goto idatualizacao;
                }
 
@@ -132,7 +126,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 
                if (idInvalido)
                {
-                    Program.ImprimirMensagem("\nNúmero já registrado!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nNúmero já registrado!", ConsoleColor.Red, 1);
                     AtualizarCaixa();
                     return;
                }
@@ -141,7 +135,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
                atualizarCaixa.Etiqueta = novaEtiqueta;
                atualizarCaixa.Numero = novoNumero;
 
-               Program.ImprimirMensagem("\nAtualização Finalizada!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nAtualização Finalizada!", ConsoleColor.Green, 1);
           }
 
           private void RemoverCaixa()
@@ -160,12 +154,12 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 
                if (removerCaixa == null)
                {
-                    Program.ImprimirMensagem("\nEntre com um número válido!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nEntre com um número válido!", ConsoleColor.Red, 1);
                     goto idremocao;
                }
 
                repositorioCaixa.RemoverCaixas(removerCaixa);
-               Program.ImprimirMensagem("\nRemoção finalizada!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nRemoção finalizada!", ConsoleColor.Green, 1);
           }
      }
 }

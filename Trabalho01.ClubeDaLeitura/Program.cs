@@ -2,6 +2,7 @@
 using Trabalho01.ClubeDaLeitura.Módulo_Amigo;
 using Trabalho01.ClubeDaLeitura.Módulo_Revista;
 using Trabalho01.ClubeDaLeitura.Módulo_Empréstimo;
+using Trabalho01.ClubeDaLeitura.Utilitários;
 
 namespace Trabalho01.ClubeDaLeitura
 {
@@ -9,6 +10,8 @@ namespace Trabalho01.ClubeDaLeitura
      {
           static void Main(string[] args)
           {
+               Tela outros = new Tela();
+
                RepositorioCaixa repositorioCaixa = new RepositorioCaixa();
                ApresentacaoCaixa exibicaoCaixa = new ApresentacaoCaixa(repositorioCaixa);
 
@@ -23,16 +26,16 @@ namespace Trabalho01.ClubeDaLeitura
 
                while (true)
                {
-                    string opcao = GerarMenu();
+                    string opcao = outros.GerarMenu("CLUBE DA LEITURA", ConsoleColor.Cyan, 0);
 
                     if (opcao == "0")
                     {
-                         ImprimirMensagem("\nSaindo do Programa...", ConsoleColor.Red, 1);
+                         outros.ImprimirTexto("\nSaindo do Programa...", ConsoleColor.Red, 1);
                          break;
                     }
 
                     else if (opcao == "1")
-                    {                   
+                    {
                          exibicaoCaixa.MenuCaixa();
                     }
 
@@ -53,35 +56,10 @@ namespace Trabalho01.ClubeDaLeitura
 
                     else
                     {
-                         ImprimirMensagem("\nEscolha uma opção válida!", ConsoleColor.Red, 1);
+                         outros.ImprimirTexto("\nEscolha uma opção válida!", ConsoleColor.Red, 1);
                          continue;
                     }
                }
-          }
-
-          public static void ImprimirMensagem(string mensagem, ConsoleColor cor, int num)
-          {
-               Console.ForegroundColor = cor;
-               Console.WriteLine(mensagem);
-               Console.ResetColor();
-
-               if (num == 1)
-               {
-                    Console.ReadLine();
-               }
-
-          }
-
-          private static string GerarMenu()
-          {
-               Console.Clear();
-               Console.WriteLine("| CLUBE DA LEITURA |");
-               Console.ForegroundColor = ConsoleColor.Cyan;
-               Console.WriteLine("\n[1] CAIXAS;\n[2] AMIGOS;\n[3] REVISTAS\n[4] EMPRÉSTIMOS;\n[0] SAIR.");
-               Console.ResetColor();
-               Console.Write("\nEntre com a opção desejada:\n> ");
-               string opcao = Console.ReadLine();
-               return opcao;
           }
      }
 }

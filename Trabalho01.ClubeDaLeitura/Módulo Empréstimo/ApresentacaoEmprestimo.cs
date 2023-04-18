@@ -6,39 +6,34 @@ using System.Threading.Tasks;
 using Trabalho01.ClubeDaLeitura.Módulo_Amigo;
 using Trabalho01.ClubeDaLeitura.Módulo_Caixa;
 using Trabalho01.ClubeDaLeitura.Módulo_Revista;
+using Trabalho01.ClubeDaLeitura.Utilitários;
 
 namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
 {
-     internal class ApresentacaoEmprestimo
+     internal class ApresentacaoEmprestimo : Tela
      {
           private RepositorioAmigo repositorioAmigo = null;
           private RepositorioRevista repositorioRevista = null;
           private RepositorioEmprestimo repositorioEmprestimo = null;
 
-        public ApresentacaoEmprestimo(RepositorioEmprestimo repositorioEmprestimo, RepositorioAmigo repositorioAmigo, RepositorioRevista repositorioRevista)
-        {
+          public ApresentacaoEmprestimo(RepositorioEmprestimo repositorioEmprestimo, RepositorioAmigo repositorioAmigo, RepositorioRevista repositorioRevista)
+          {
                this.repositorioEmprestimo = repositorioEmprestimo;
                this.repositorioAmigo = repositorioAmigo;
                this.repositorioRevista = repositorioRevista;
-        }
+          }
 
-        public void MenuEmprestimo()
+          public void MenuEmprestimo()
           {
                int saida = 1;
                do
                {
-                    Console.Clear();
-                    Console.WriteLine("| EMPRÉSTIMOS |");
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("\n[1] CRIAR;\n[2] VISUALIZAR EMPRÉSTIMOS MÊS;\n[3] VISUALIZAR EMPRÉSTIMOS ABERTOS;\n[0] SAIR.");
-                    Console.ResetColor();
-                    Console.Write("\nEntre com a opção desejada:\n> ");
-                    string opcaoEmprestimo = Console.ReadLine();
+                    string opcaoEmprestimo = GerarMenu("EMPRÉSTIMOS", ConsoleColor.Blue, 2);
 
                     switch (opcaoEmprestimo)
                     {
                          case "0":
-                              Program.ImprimirMensagem("\nSaindo de Empréstimos...", ConsoleColor.Red, 1);
+                              ImprimirTexto("\nSaindo de Empréstimos...", ConsoleColor.Red, 1);
                               saida--;
                               break;
 
@@ -55,7 +50,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
                               break;
 
                          default:
-                              Program.ImprimirMensagem("\nInsira uma opção inválida!", ConsoleColor.Red, 1);
+                              ImprimirTexto("\nInsira uma opção inválida!", ConsoleColor.Red, 1);
                               break;
                     }
                } while (saida > 0);
@@ -69,18 +64,18 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
 
                if (amigo == null)
                {
-                    Program.ImprimirMensagem("\nAmigo inválido!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nAmigo inválido!", ConsoleColor.Red, 1);
                     return;
                }
 
                repositorioRevista.ExibirRevistas("Mostrando revistas...\n");
                Console.Write("\nEntre com a ID da revista que será pega pelo amigo:\n> ");
                int idRevista = Convert.ToInt32(Console.ReadLine());
-               NegocioRevista revista  = repositorioRevista.PegarIdRevistas(idRevista);
+               NegocioRevista revista = repositorioRevista.PegarIdRevistas(idRevista);
 
                if (revista == null)
                {
-                    Program.ImprimirMensagem("\nRevista inválida!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nRevista inválida!", ConsoleColor.Red, 1);
                     return;
                }
 
@@ -94,23 +89,22 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
 
                if (!validarRevista)
                {
-                    Program.ImprimirMensagem("\nA revista não está disponível!", ConsoleColor.Red,1);
+                    ImprimirTexto("\nA revista não está disponível!", ConsoleColor.Red, 1);
                     return;
                }
 
                bool validarEmprestimo = repositorioEmprestimo.VerificarAmigosRevistas(idAmigo);
                if (validarEmprestimo)
                {
-                    Program.ImprimirMensagem("\nApenas um livro por empréstimo!", ConsoleColor.Red, 1);
+                    ImprimirTexto("\nApenas um livro por empréstimo!", ConsoleColor.Red, 1);
                     return;
                }
 
                NegocioEmprestimo emprestimo = new NegocioEmprestimo(amigo, revista, dataEmprestimo, dataDevolucao);
                repositorioEmprestimo.GravarEmprestimos(emprestimo);
 
-               Program.ImprimirMensagem("\nCadastrado com sucesso!", ConsoleColor.Green, 1);
+               ImprimirTexto("\nCadastrado com sucesso!", ConsoleColor.Green, 1);
           }
-
           private void VisualizarEmprestimosMes()
           {
                bool validacaoCaixas = repositorioEmprestimo.ValidarEmprestimo();
@@ -119,7 +113,6 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
 
                repositorioEmprestimo.EmprestimosMes();
           }
-
           private void VisualizarEmprestimoAberto()
           {
                bool validarEmprestimo = repositorioEmprestimo.ValidarEmprestimo();

@@ -11,6 +11,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 {
      internal class RepositorioRevista : RepositorioGeral
      {
+          //pol+
           public void GravarRevistas(NegocioRevista revistaGravada)
           {
                dados.Add(revistaGravada);
@@ -20,7 +21,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
           {
                if (dados.Count == 0)
                {
-                    Program.ImprimirMensagem("\nNenhuma revista cadastrada!", ConsoleColor.DarkYellow, 1);
+                    ImprimirTexto("\nNenhuma revista cadastrada!", ConsoleColor.DarkYellow, 1);
                     return true;
                }
                else
@@ -62,10 +63,11 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                return revista;
           }
 
+          //pol+
           public void ExibirRevistas(string mensagem)
           {
                Console.Clear();
-               Program.ImprimirMensagem(mensagem, ConsoleColor.DarkGray, 0);
+               ImprimirTexto(mensagem, ConsoleColor.DarkGray, 0);
                Console.BackgroundColor = ConsoleColor.Blue;
                Console.ForegroundColor = ConsoleColor.White;
                Console.WriteLine("| {0,-10} | {1,-20} | {2,-15} | {3,-20} | {4,-25} |", "ID", "COLEÇÃO", "EDIÇÃO", "ANO REVISTA", "CAIXA");
@@ -78,6 +80,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                }
           }
 
+          //pol+
           public void RemoverRevistas(NegocioRevista revistaRemovida)
           {
                dados.Remove(revistaRemovida);

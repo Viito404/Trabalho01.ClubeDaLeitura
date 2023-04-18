@@ -19,7 +19,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
           {
                if (dados.Count == 0)
                {
-                    Program.ImprimirMensagem("\nNenhuma caixa cadastrada!", ConsoleColor.DarkYellow, 1);
+                    ImprimirTexto("\nNenhuma caixa cadastrada!", ConsoleColor.DarkYellow, 1);
                     return true;
                }
                else
@@ -64,7 +64,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
           public void ExibirCaixas(string mensagem)
           {
                Console.Clear();
-               Program.ImprimirMensagem(mensagem, ConsoleColor.DarkGray, 0);
+               ImprimirTexto(mensagem, ConsoleColor.DarkGray, 0);
                Console.BackgroundColor = ConsoleColor.Blue;
                Console.ForegroundColor = ConsoleColor.White;
                Console.WriteLine("| {0,-10} | {1,-20} | {2,-20} |","ID","COR","ETIQUETA");
