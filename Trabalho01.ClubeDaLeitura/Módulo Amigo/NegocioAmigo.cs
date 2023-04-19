@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Trabalho01.ClubeDaLeitura.Utilitários;
 
 namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
 {
-     internal class NegocioAmigo
+     internal class NegocioAmigo : Entidade
      {
           private string nome, nomeResponsavel, endereco, telefone;
           private int idAmigo;

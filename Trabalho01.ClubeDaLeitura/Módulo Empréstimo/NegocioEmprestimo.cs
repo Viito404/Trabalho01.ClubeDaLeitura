@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Trabalho01.ClubeDaLeitura.Módulo_Amigo;
 using Trabalho01.ClubeDaLeitura.Módulo_Caixa;
 using Trabalho01.ClubeDaLeitura.Módulo_Revista;
+using Trabalho01.ClubeDaLeitura.Utilitários;
 
 namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
 {
-     internal class NegocioEmprestimo
+     internal class NegocioEmprestimo : Entidade
      {
           private NegocioAmigo emprestimoAmigo;
           private NegocioRevista emprestimoRevista;

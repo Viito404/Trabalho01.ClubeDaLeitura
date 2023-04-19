@@ -10,12 +10,14 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 {
      internal class RepositorioCaixa : RepositorioGeral
      {
-          public void GravarCaixas(NegocioCaixa caixaGravada)
+          public NegocioCaixa caixa
           {
-               dados.Add(caixaGravada);
+               get => default;
+               set
+               {
+               }
           }
-
-          public bool ValidarCaixas()
+          public override bool ValidarElementos()
           {
                if (dados.Count == 0)
                {
@@ -26,7 +28,6 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
                {
                     return false;
                }
-
           }
 
           public bool ValidarIdCaixas(int idCaixa)
@@ -75,11 +76,6 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
                {
                     Console.WriteLine("| {0,-10} | {1,-20} | {2,-20} |", caixa.Numero, caixa.Cor, caixa.Etiqueta);
                }              
-          }
-
-          public void RemoverCaixas(NegocioCaixa caixaRemovida)
-          {
-               dados.Remove(caixaRemovida);
           }
      }
 }

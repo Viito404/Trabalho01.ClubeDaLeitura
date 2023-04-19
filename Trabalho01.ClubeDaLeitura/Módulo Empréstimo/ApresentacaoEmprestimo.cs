@@ -101,7 +101,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
                }
 
                NegocioEmprestimo emprestimo = new NegocioEmprestimo(amigo, revista, dataEmprestimo, dataDevolucao);
-               repositorioEmprestimo.GravarEmprestimos(emprestimo);
+               repositorioEmprestimo.Gravar(emprestimo);
 
                ImprimirTexto("\nCadastrado com sucesso!", ConsoleColor.Green, 1);
           }

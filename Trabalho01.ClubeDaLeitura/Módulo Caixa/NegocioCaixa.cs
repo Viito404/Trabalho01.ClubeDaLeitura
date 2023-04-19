@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Trabalho01.ClubeDaLeitura.Utilitários;
 
 namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 {
-     internal class NegocioCaixa
+     internal class NegocioCaixa : Entidade
      {
           private string cor, etiqueta;
           private int numero;

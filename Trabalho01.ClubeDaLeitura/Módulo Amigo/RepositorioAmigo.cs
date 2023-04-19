@@ -11,11 +11,6 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
 {
      internal class RepositorioAmigo : RepositorioGeral
      {
-          public void GravarAmigos(NegocioAmigo amigoGravado)
-          {
-               dados.Add(amigoGravado);
-          }
-
           public bool ValidarAmigos()
           {
                {
@@ -78,11 +73,6 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
                {
                     Console.WriteLine("| {0,-20} | {1,-20} | {2,-20} | {3,-20} | {4,-20} |", amigo.IdAmigo, amigo.Nome, amigo.NomeResponsavel, amigo.Endereco, amigo.Telefone);
                }               
-          }
-
-          public void RemoverAmigos(NegocioAmigo amigoRemovido)
-          {
-               dados.Remove(amigoRemovido);
           }
      }
 }

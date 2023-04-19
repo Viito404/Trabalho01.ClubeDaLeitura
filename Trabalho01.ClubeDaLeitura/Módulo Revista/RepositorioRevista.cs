@@ -11,12 +11,6 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 {
      internal class RepositorioRevista : RepositorioGeral
      {
-          //pol+
-          public void GravarRevistas(NegocioRevista revistaGravada)
-          {
-               dados.Add(revistaGravada);
-          }
-
           public bool ValidarRevistas()
           {
                if (dados.Count == 0)
@@ -63,7 +57,6 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                return revista;
           }
 
-          //pol+
           public void ExibirRevistas(string mensagem)
           {
                Console.Clear();
@@ -78,12 +71,6 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                {
                     Console.WriteLine("| {0,-10} | {1,-20} | {2,-15} | {3,-20} | {4,-25} |", revista.IdRevista, revista.TipoColecao, revista.NumeroEdicao, revista.AnoRevista, $"{revista.CaixaRevista.Numero} : {revista.CaixaRevista.Etiqueta} : {revista.CaixaRevista.Cor}");
                }
-          }
-
-          //pol+
-          public void RemoverRevistas(NegocioRevista revistaRemovida)
-          {
-               dados.Remove(revistaRemovida);
           }
      }
 }

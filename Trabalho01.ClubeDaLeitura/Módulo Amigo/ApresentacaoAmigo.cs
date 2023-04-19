@@ -84,7 +84,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
 
                NegocioAmigo amigo = new NegocioAmigo(nome, nomeResponsavel, endereco, telefone, id);
 
-              repositorioAmigo.GravarAmigos(amigo);
+              repositorioAmigo.Gravar(amigo);
                ImprimirTexto("\nCadastro Finalizado!", ConsoleColor.Green, 1);
           }
           
@@ -172,7 +172,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Amigo
                     goto idremocao;
                }
 
-               repositorioAmigo.RemoverAmigos(removerAmigo);
+               repositorioAmigo.Remover(removerAmigo);
                ImprimirTexto("\nRemoção finalizada!", ConsoleColor.Green, 1);
           }
      }

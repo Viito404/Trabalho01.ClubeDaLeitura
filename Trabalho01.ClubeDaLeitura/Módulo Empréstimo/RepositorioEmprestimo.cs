@@ -11,10 +11,6 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Empréstimo
 {
      internal class RepositorioEmprestimo : RepositorioGeral
      {
-          public void GravarEmprestimos(NegocioEmprestimo emprestimoGravado)
-          {
-               dados.Add(emprestimoGravado);
-          }
           public bool ValidarEmprestimo()
           {
                if (dados.Count == 0)

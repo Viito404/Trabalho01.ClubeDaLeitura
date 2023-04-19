@@ -99,7 +99,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 
                NegocioRevista revista = new NegocioRevista(tipoColecao, numeroEdicao, anoRevista, idRevista, caixaRevista);
 
-               repositorioRevista.GravarRevistas(revista);
+               repositorioRevista.Gravar(revista);
                ImprimirTexto("\nCadastro Finalizado!", ConsoleColor.Green, 1);
           }
 
@@ -197,7 +197,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
                     goto idremocao;
                }
 
-               repositorioRevista.RemoverRevistas(removerRevista);
+               repositorioRevista.Remover(removerRevista);
                ImprimirTexto("\nRemoção finalizada!", ConsoleColor.Green, 1);
           }
      }

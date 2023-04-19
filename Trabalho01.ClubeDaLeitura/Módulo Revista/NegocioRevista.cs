@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Trabalho01.ClubeDaLeitura.Módulo_Caixa;
+using Trabalho01.ClubeDaLeitura.Utilitários;
 
 namespace Trabalho01.ClubeDaLeitura.Módulo_Revista
 {
-     internal class NegocioRevista
+     internal class NegocioRevista : Entidade
      {
           private string tipoColecao;
           private int numeroEdicao, idRevista;

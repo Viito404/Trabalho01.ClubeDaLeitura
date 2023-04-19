@@ -76,13 +76,13 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 
                NegocioCaixa caixa = new NegocioCaixa(cor, etiqueta, numero);
 
-               repositorioCaixa.GravarCaixas(caixa);
+               repositorioCaixa.Gravar(caixa);
                ImprimirTexto("\nCadastro Finalizado!", ConsoleColor.Green, 1);
           }
 
           private void VisualizarCaixa()
           {
-               bool validacao = repositorioCaixa.ValidarCaixas();
+               bool validacao = repositorioCaixa.ValidarElementos();
 
                if (validacao)
                     return;
@@ -93,7 +93,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 
           private void AtualizarCaixa()
           {
-               bool validacao = repositorioCaixa.ValidarCaixas();
+               bool validacao = repositorioCaixa.ValidarElementos();
 
                if (validacao)
                     return;
@@ -140,7 +140,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
 
           private void RemoverCaixa()
           {
-               bool validacao = repositorioCaixa.ValidarCaixas();
+               bool validacao = repositorioCaixa.ValidarElementos();
 
                if (validacao)
                     return;
@@ -158,7 +158,7 @@ namespace Trabalho01.ClubeDaLeitura.Módulo_Caixa
                     goto idremocao;
                }
 
-               repositorioCaixa.RemoverCaixas(removerCaixa);
+               repositorioCaixa.Remover(removerCaixa);
                ImprimirTexto("\nRemoção finalizada!", ConsoleColor.Green, 1);
           }
      }
